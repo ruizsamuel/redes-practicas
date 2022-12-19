@@ -14,10 +14,13 @@ public class Ejercicio3 {
                 System.out.println("Socket creado para nuevo cliente");
                 Scanner entrada = new Scanner(s.getInputStream());
                 PrintWriter salida = new PrintWriter(s.getOutputStream(), true);
+
+                salida.println("HTTP/1.0 200 OK \r");
+                salida.println("Content-Type: text/plain \r");
+                salida.println("\r");
                 
-                String linea = "0";
-                while (!linea.equals("")) {
-                    linea = entrada.nextLine();
+                String linea;
+                while (!(linea = entrada.nextLine()).equals("")) {
                     salida.println(linea);
                 }
 
